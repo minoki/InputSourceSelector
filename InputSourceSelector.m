@@ -10,9 +10,9 @@ int main(int argc, char const * const * argv) {
                      || strcmp(argv[1],"list-enabled") == 0)) {
         Boolean listAll = strcmp(argv[1],"list") == 0;
         NSArray *inputSources = [(NSArray *)TISCreateInputSourceList(NULL,listAll) autorelease];
-        for (TISInputSourceRef __attribute__((NSObject)) inputSource in inputSources) {
-            NSString *inputSourceID = TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceID);
-            NSString *localizedName = TISGetInputSourceProperty(inputSource, kTISPropertyLocalizedName);
+        for (NSObject *inputSource in inputSources) {
+            NSString *inputSourceID = TISGetInputSourceProperty((TISInputSourceRef)inputSource, kTISPropertyInputSourceID);
+            NSString *localizedName = TISGetInputSourceProperty((TISInputSourceRef)inputSource, kTISPropertyLocalizedName);
             printf("%s (%s)\n",[inputSourceID UTF8String],[localizedName UTF8String]);
         }
     } else if (argc > 1 && (strcmp(argv[1],"current") == 0
