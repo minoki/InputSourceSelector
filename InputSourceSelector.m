@@ -13,7 +13,9 @@ int main(int argc, char const * const * argv) {
         for (NSObject *inputSource in inputSources) {
             NSString *inputSourceID = TISGetInputSourceProperty((TISInputSourceRef)inputSource, kTISPropertyInputSourceID);
             NSString *localizedName = TISGetInputSourceProperty((TISInputSourceRef)inputSource, kTISPropertyLocalizedName);
-            printf("%s (%s)\n",[inputSourceID UTF8String],[localizedName UTF8String]);
+            NSArray *sourceLanguages = TISGetInputSourceProperty((TISInputSourceRef)inputSource, kTISPropertyInputSourceLanguages);
+            NSString *sourceLang = [sourceLanguages firstObject];
+            printf("%s (%s, %s)\n",[inputSourceID UTF8String],[localizedName UTF8String],[sourceLang UTF8String]);
         }
     } else if (argc > 1 && (strcmp(argv[1],"current") == 0
                             || strcmp(argv[1],"current-layout") == 0)) {
@@ -23,7 +25,9 @@ int main(int argc, char const * const * argv) {
                 : TISCopyCurrentKeyboardInputSource();
         NSString *inputSourceID = TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceID);
         NSString *localizedName = TISGetInputSourceProperty(inputSource, kTISPropertyLocalizedName);
-        printf("%s (%s)\n",[inputSourceID UTF8String],[localizedName UTF8String]);
+        NSArray *sourceLanguages = TISGetInputSourceProperty((TISInputSourceRef)inputSource, kTISPropertyInputSourceLanguages);
+        NSString *sourceLang = [sourceLanguages firstObject];
+        printf("%s (%s, %s)\n",[inputSourceID UTF8String],[localizedName UTF8String],[sourceLang UTF8String]);
         CFRelease(inputSource);
     } else if (argc > 2 && (strcmp(argv[1],"enable") == 0
                             || strcmp(argv[1],"disable") == 0
