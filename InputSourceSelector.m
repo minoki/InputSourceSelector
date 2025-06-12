@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <Carbon/Carbon.h>
 #include <Foundation/Foundation.h>
-int main(int argc, char const * const * argv) {
+int main(int argc, char *argv[]) {
     id pool = [NSAutoreleasePool new];
     if (argc > 1 && (strcmp(argv[1],"list") == 0
                      || strcmp(argv[1],"list-enabled") == 0)) {
