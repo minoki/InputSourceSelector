@@ -72,3 +72,8 @@ com.apple.inputmethod.Kotoeri.Roman (Romaji)
 $ InputSourceSelector current-layout
 com.apple.keylayout.Dvorak (Dvorak)
 ```
+
+License
+=======
+
+[MIT License](LICENSE.txt)
