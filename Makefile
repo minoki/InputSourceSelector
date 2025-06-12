@@ -1,4 +1,4 @@
 all: InputSourceSelector
 
 InputSourceSelector: InputSourceSelector.m
-	gcc -o $@ -Wall $< -framework Carbon -framework Foundation
+	$(CC) -o $@ -Wall $< -framework Carbon -framework Foundation
